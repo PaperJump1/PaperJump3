@@ -1,75 +1,63 @@
 ---
 layout: default
+title: 林德熙
 ---
+<div class="well">
+    <div class="list-group">
 
-<div id="ace-content" class="ace-container-shift">
-    <div class="ace-container">
-        <div id="ace-nav-wrap" class="hidden-sm hidden-xs">
-            <div class="ace-nav-cont">
-                <div id="ace-nav-scroll">
-                    <nav id="ace-nav" class="ace-nav">
-                        <ul class="clear-list">
-                            <li>
-                              <a href="index.html" data-tooltip="Home"><img class="avatar avatar-42" src="{{ '/styles/img/show-star.png' | prepend: site.baseurl }}" alt=""></a>
-                            </li>
-                            <li>
-                              <a href="#basic_info" data-tooltip="基本信息"><span class="ace-icon ace-icon-home"></span></a>
-                            </li>
-                            <li>
-                              <a href="#profetional" data-tooltip="职业技能"><span class="ace-icon ace-icon-experience"></span></a>
-                            </li>
+      <div class="list-group-item">
+        <div class="row-content">
+          <img src="http://image.acmx.xyz/lindexi%2F20209261948591092.jpg" />
+        </div>
+      </div>
+      <!-- http://image.acmx.xyz/lindexi%2F2020926163868559.jpg -->
+      <div style="margin-top: 10px;margin-bottom: 10px;"/>
 
-                            <li>
-                              <a href="#education" data-tooltip="教育经历"><span class="ace-icon ace-icon-portfolio"></span></a>
-                            </li>
-                            
-                            <li>
-                              <a href="#experience" data-tooltip="工作经历"><span class="ace-icon ace-icon-references"></span></a>
-                            </li>
-                            <li>
-                              <a href="#certification" data-tooltip="获得证书"><span class="ace-icon ace-icon-blog"></span></a>
-                            </li>
-                            <li>
-                              <a href="#personal_project" data-tooltip="个人作品"><span class="ace-icon ace-icon-snowflake-o"></span></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+      {% for post in paginator.posts %}
+      <div class="list-group-item">
+        <div class="row-content">
+          <h4 class="list-group-item-heading"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+          <!-- <p style="font-size: 0.8em">{{ post.date | date: "%Y-%m-%d %H:%M" }}</p> -->
+          <p class="list-group-item-text">{{ post.excerpt }}</p>
+        </div>
+      </div>
+      <div class="list-group-separator"></div>
+      {% endfor %}
+    </div>
+   
 
-                <div id="ace-nav-tools" class="hidden">
-                    <span class="ace-icon ace-icon-dots-three-horizontal"></span>
+    <!-- Pagination links -->
+    {% if paginator.total_pages > 1 %}
+    <ul class="pager">
+      {% if paginator.previous_page %}
+        <li class="previous">
+          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">←</a>
+        </li>
+      {% else %}
+        <li class="previous disabled"><span aria-hidden="true">←</span></li>
+      {% endif %}
 
-                    <button id="ace-nav-arrow" class="clear-btn">
-                        <span class="ace-icon ace-icon-chevron-thin-down"></span>
-                    </button>
-                </div>
-            </div>
+      {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+          <li class="active">
+             <a>{{ page }}<span class="sr-only">(current)</span></a>
+          </li>
+        {% elsif page == 1 %}
+          <li><a href="/">{{ page }}</a></li>
+        {% else %}
+          <li>
+            <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
 
-            <!-- <div class="ace-nav-btm"></div> -->
-        </div><!-- .ace-nav-wrap -->
-
-        <div class="ace-paper-stock">
-            <main class="ace-paper clearfix">
-                <div class="ace-paper-cont clear-mrg">
-                    <!-- START: PAGE CONTENT -->
-                    <div class="padd-box clear-mrg">
-
-                    {% include resumer_01-basic.html %}
-
-                    {% include resumer_02-profetional.html %}
-
-                    {% include resumer_03-education.html %}
-
-                    {% include resumer_04-experience.html %}
-
-                    {% include resumer_05-certification.html %}
-
-                    {% include resumer_06-personal_project.html %}
-                        
-                    </div><!-- .padd-box -->
-                <!-- END: PAGE CONTENT -->
-                </div><!-- .ace-paper-cont -->
-            </main><!-- .ace-paper -->
-        </div><!-- .ace-paper-stock -->
-    </div><!-- .ace-container -->
-</div><!-- #ace-content -->
+      {% if paginator.next_page %}
+        <li class="next">
+          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">→</a>
+        </li>
+      {% else %}
+        <li class="next disabled"><span>→</span></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+</div><!-- end #home -->
