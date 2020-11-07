@@ -9,6 +9,17 @@
     <meta name="author" content="ZHIHUA·WEI">
     <meta name="version" content="1.0.0">
     <!--END HEAD MATE-->
+     <script>
+      $(document).ready(function () {
+          $("#hide").click(function(){
+            $("p").hide();
+          });
+           $("#show").click(function(){
+            $("p").show();
+          });
+          
+             
+      });
 
     <!--BEGIN HEAD LINK SHORTCUT ICON-->
     <link rel="shortcut icon" href="images/icon/zhihuawei_favicon32x32.ico">
@@ -115,13 +126,9 @@
     </pre>
     <h3>內湖高中</h3>
      
-    <script>
-    $(document).ready(function() {
-    $("#button").css("color", "blue");
-
-  });
-    </script>
-    <button id="button">按钮</button>
+    <p>點擊"隱藏"我會消失.</p>
+        <button id="hide">隱藏</button>
+          <button id="show">顯示</button>
     
     <pre>
     
