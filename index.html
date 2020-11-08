@@ -15,7 +15,13 @@
      <script>
       $(document).ready(function () {
           $("#button1").css("color", "red");
-          $("#button1").animate({top:'250px'},"slow");
+            $("#hide").click(function(){
+            $("p").hide();
+          });
+           $("#show").click(function(){
+            $("p").show();
+          });
+          
              
       });
     </script>
